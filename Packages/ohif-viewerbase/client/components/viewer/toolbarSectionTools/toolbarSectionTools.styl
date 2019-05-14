@@ -1,0 +1,47 @@
+@import "{ohif:design}/app"
+
+$distance = 10px
+
+.toolbarSectionTools
+  position: relative
+
+  .toolbarSectionButton>.buttonLabel i.expanded-status
+    text-align: center
+    transition(all 300ms ease)
+    width: 8px
+
+  .toolbarSectionButton.expanded
+    &>.buttonLabel i.expanded-status
+      transform(rotateX(180deg))
+
+    &>.toolbarSectionDrawerContainer
+      opacity: 1
+      transform(translateX(-50%) translateY(0) scale(1))
+
+  .toolbarSectionDrawerContainer
+    top: 50px
+    left: 50%
+    width: 100px
+    height: auto
+    opacity: 0
+    padding-top: $distance
+    position: absolute
+    transition(opacity 0.3s ease\, transform 0.3s ease\, left 0.3s ease)
+    transform(translateX(-50%) translateY( - ($toolbarDrawerHeight + $distance)) scale(0))
+    white-space: normal
+    z-index: 2
+
+    .toolbarSectionDrawer
+      theme('background', '$uiGrayDarkest', 0.95)
+      theme('border', '2px solid $uiBorderColor', 0.95)
+      border-radius: 7px
+      theme('color', '$textPrimaryColor')
+      content: ''
+      display: block
+      font-size: 18px
+      height: auto
+      max-height: 400px
+      overflow-y: scroll
+      padding-top: 6px
+      text-align: center
+      width: 100%
